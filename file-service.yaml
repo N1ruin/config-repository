@@ -1,0 +1,51 @@
+spring:
+  servlet:
+    multipart:
+      max-file-size: ${FILE_MAX_SIZE}
+
+  kafka:
+    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS}
+    consumer:
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JacksonJsonDeserializer
+      group-id: file-service-group
+      properties:
+        spring.json.trusted.packages: "*"
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: ${KEYCLOAK_ISSUER_URI}
+
+minio:
+  endpoint: ${MINIO_ENDPOINT}
+  user: ${MINIO_USER}
+  password: ${MINIO_PASSWORD}
+  permanent-file-bucket-name: equipments
+  temporary-files-bucket-name: temp
+  maxFileSize: ${MINIO_MAX_FILE_SIZE}
+  temporary-files-life-days: ${MINIO_TEMP_LIFE_DAYS}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
+      base-path: /actuator
+  endpoint:
+    health:
+      show-details: always
+      show-components: always
+      probes:
+        enabled: true
+    metrics:
+      enabled: true
+    prometheus:
+      enabled: true
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+    tags:
+      application: file-service

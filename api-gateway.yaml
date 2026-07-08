@@ -8,6 +8,8 @@ spring:
         locator:
           enabled: true
           lower-case-service-id: true
+      ignored-services: '*' 
+      
       routes:
         - id: techprocess-service
           uri: lb://techprocess-service
@@ -68,6 +70,8 @@ management:
         include: health,info,refresh,prometheus,metrics,gateway
       base-path: /actuator
   endpoint:
+    gateway:
+      enabled: true
     health:
       show-details: always
       show-components: always

@@ -12,35 +12,35 @@ spring:
         - id: techprocess-service
           uri: lb://techprocess-service
           predicates:
-            - Path=/api/v1/techprocess-service
+            - Path=/api/v1/techprocess-service, /api/v1/techprocess-service/**
           filters:
             - TokenRelay
 
         - id: library-equipments
           uri: lb://technical-library-service
           predicates:
-            - Path=/api/v1/library-service/equipments
+            - Path=/api/v1/library-service/equipments, /api/v1/library-service/equipments/**
           filters:
             - TokenRelay
 
         - id: library-materials
           uri: lb://technical-library-service
           predicates:
-            - Path=/api/v1/library-service/materials
+            - Path=/api/v1/library-service/materials, /api/v1/library-service/materials/**
           filters:
             - TokenRelay
 
         - id: library-safety-instructions
           uri: lb://technical-library-service
           predicates:
-            - Path=/api/v1/library-service/safety-instructions
+            - Path=/api/v1/library-service/safety-instructions, /api/v1/library-service/safety-instructions/**
           filters:
             - TokenRelay
 
         - id: notification-service
           uri: lb://notification-service
           predicates:
-            - Path=/api/v1/notification-service
+            - Path=/api/v1/notification-service, /api/v1/notification-service/**
           filters:
             - TokenRelay
 

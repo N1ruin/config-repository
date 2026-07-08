@@ -13,7 +13,7 @@ management:
   endpoints:
     web:
       exposure:
-        include: health,info,refresh,prometheus,metrics,gateway
+        include: include: health,info,refresh,prometheus,metrics,gateway
       base-path: /actuator
   endpoint:
     health:

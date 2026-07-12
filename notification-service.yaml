@@ -17,14 +17,10 @@ spring:
     properties:
       hibernate:
         default_schema: notification_service
-
+        
   kafka:
-    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS}
     consumer:
-      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      value-deserializer: org.springframework.kafka.support.serializer.JacksonJsonDeserializer
       properties:
-        spring.json.trusted.packages: "*"
         spring.json.type.mapping: |
           by.niruin.library.model.event.material.MaterialCreatedEvent:by.niruin.notification_service.model.event.technical_library.material.MaterialCreatedEvent,
           by.niruin.library.model.event.material.MaterialUpdatedEvent:by.niruin.notification_service.model.event.technical_library.material.MaterialUpdatedEvent,
@@ -35,12 +31,12 @@ spring:
           by.niruin.library.model.event.instruction.SafetyInstructionCreatedEvent:by.niruin.notification_service.model.event.technical_library.safety_instruction.SafetyInstructionCreatedEvent,
           by.niruin.library.model.event.instruction.SafetyInstructionUpdatedEvent:by.niruin.notification_service.model.event.technical_library.safety_instruction.SafetyInstructionUpdatedEvent,
           by.niruin.library.model.event.instruction.SafetyInstructionDeletedEvent:by.niruin.notification_service.model.event.technical_library.safety_instruction.SafetyInstructionDeletedEvent,
-          by.niruin.techprocess_service.model.event.techprocess.TechnologicalProcessApprovedEvent:by.niruin.notification_service.model.event.technological_process.TechnologicalProcessApprovedEvent,
-          by.niruin.techprocess_service.model.event.techprocess.TechnologicalProcessCancelledEvent:by.niruin.notification_service.model.event.technological_process.TechnologicalProcessCancelledEvent,
-          by.niruin.techprocess_service.model.event.techprocess.TechnologicalProcessCreatedEvent:by.niruin.notification_service.model.event.technological_process.TechnologicalProcessCreatedEvent,
-          by.niruin.techprocess_service.model.event.techprocess.TechnologicalProcessReturnedAfterReviewEvent:by.niruin.notification_service.model.event.technological_process.TechnologicalProcessReturnedAfterReviewEvent,
-          by.niruin.techprocess_service.model.event.techprocess.TechnologicalProcessSentToReviewEvent:by.niruin.notification_service.model.event.technological_process.TechnologicalProcessSentToReviewEvent,
-          by.niruin.techprocess_service.model.event.techprocess.TechnologicalProcessUpdatedEvent:by.niruin.notification_service.model.event.technological_process.TechnologicalProcessUpdatedEvent
+          by.niruin.techprocess_service.model.event.technological_process.TechnologicalProcessCreatedEvent:by.niruin.notification_service.model.event.technological_process.TechnologicalProcessCreatedEvent,
+          by.niruin.techprocess_service.model.event.technological_process.TechnologicalProcessUpdatedEvent:by.niruin.notification_service.model.event.technological_process.TechnologicalProcessUpdatedEvent,
+          by.niruin.techprocess_service.model.event.technological_process.TechnologicalProcessApprovedEvent:by.niruin.notification_service.model.event.technological_process.TechnologicalProcessApprovedEvent,
+          by.niruin.techprocess_service.model.event.technological_process.TechnologicalProcessCancelledEvent:by.niruin.notification_service.model.event.technological_process.TechnologicalProcessCancelledEvent,
+          by.niruin.techprocess_service.model.event.technological_process.TechnologicalProcessReturnedAfterReviewEvent:by.niruin.notification_service.model.event.technological_process.TechnologicalProcessReturnedAfterReviewEvent,
+          by.niruin.techprocess_service.model.event.technological_process.TechnologicalProcessSentToReviewEvent:by.niruin.notification_service.model.event.technological_process.TechnologicalProcessSentToReviewEvent
 
   security:
     oauth2:
